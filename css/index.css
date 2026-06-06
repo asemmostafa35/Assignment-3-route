@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 85px;
+  background-color: #f8f9fa;
+}
+.glass-navbar {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  z-index: 1000;
+}
+.coninter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 15px;
+}
+.New-contact {
+  padding: 25px;
+  background-color: #ffffff;
+  height: auto;
+  max-height: 90vh;
+  width: 100%;
+  max-width: 480px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.conintaner {
+  padding: 30px;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.swal2-container {
+  z-index: 9999 !important;
+}
+.inputs {
+  flex-grow: 1;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  padding-right: 5px;
+  scrollbar-width: none;
+}
+
+.custom-navbar .logo-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+}
+.custom-navbar .lead-text .brand-purple {
+  color: #a855f7;
+}
+.custom-navbar .lead-text .small-desc {
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+}
+.custom-navbar .icon-btn {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.custom-navbar .icon-btn:hover {
+  color: #475569 !important;
+  transform: scale(1.05);
+}
+.custom-navbar .btn-purple {
+  background-color: #6366f1;
+  border: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+.custom-navbar .btn-purple:hover {
+  background-color: #4f46e5;
+  transform: translateY(-1px);
+}
+.custom-navbar .btn-purple:active {
+  transform: translateY(1px);
+}
+.custom-navbar .profile-avatar {
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.ckeck {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.inputs::-webkit-scrollbar {
+  width: 6px;
+}
+.inputs::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+.coninter.show {
+  display: flex !important;
+}
+.New-contact.show {
+  display: flex !important;
+}

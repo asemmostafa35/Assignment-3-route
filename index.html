@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Contact</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light border-bottom py-2 custom-navbar fixed-top glass-navbar"
+    >
+      <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <div
+            class="logo-icon d-flex align-items-center justify-content-center rounded-3 text-white shadow-sm"
+          >
+            <i class="bi bi-journal-bookmark-fill fs-4"></i>
+          </div>
+          <div class="d-flex flex-column lead-text">
+            <span class="fw-bold fs-4 text-dark lh-1"
+              >Contact<span class="brand-purple">Hub</span></span
+            >
+            <span class="text-secondary small-desc mt-1"
+              >Smart Contact Manager</span
+            >
+          </div>
+        </a>
+
+        <div class="d-flex align-items-center gap-4 ms-auto">
+          <button
+            type="button"
+            class="btn btn-purple d-flex align-items-center gap-2 py-2.5 px-4 rounded-3 fw-medium text-white shadow-sm"
+            id="buttonaddcontant"
+          >
+            <i class="bi bi-plus-lg fs-5"></i> Add Contact
+          </button>
+          <button class="btn border-0 p-1 text-secondary icon-btn">
+            <i class="bi bi-bell-fill fs-4"></i>
+          </button>
+          <button class="btn border-0 p-1 text-secondary icon-btn">
+            <i class="bi bi-gear-fill fs-4"></i>
+          </button>
+          <div class="profile-avatar overflow-hidden rounded-3 border">
+            <img
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100&h=100"
+              alt="Profile"
+              class="w-100 h-100 object-fit-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="coninter">
+      <div class="New-contact">
+        <div
+          class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2"
+        >
+          <h1 class="fs-4 fw-bold m-0" id="AddContant">Add New Contact</h1>
+          <h1 class="fs-4 fw-bold m-0 d-none" id="editsContant">
+            Edit Contact
+          </h1>
+          <button
+            type="button"
+            id="closebutton"
+            class="btn border-0 py-1 px-2.5 rounded-3 fw-medium"
+            style="background-color: #f8f9fa; color: #1e293b"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <div class="inputs">
+          <div class="mb-3">
+            <label for="ContantName" class="form-label fw-bold"
+              >Full Name <span class="text-danger">*</span></label
+            >
+            <input
+              oninput="validateAllInputs(this)"
+              type="text"
+              class="form-control py-2.5 rounded-3 shadow-none"
+              id="ContantName"
+              placeholder="Enter full name"
+            />
+            <p class="d-none">
+              Name should contain only letters and spaces (2-50 characters)
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="ContantNumber" class="form-label fw-bold"
+              >Phone Number <span class="text-danger">*</span></label
+            >
+            <input
+              oninput="validateAllInputs(this)"
+              type="text"
+              class="form-control py-2.5 rounded-3 shadow-none"
+              id="ContantNumber"
+              placeholder="e.g., 01012345678"
+            />
+            <p class="d-none">Please enter a valid Egyptian phone number</p>
+          </div>
+
+          <div class="mb-3">
+            <label for="ContantEmail" class="form-label fw-bold"
+              >Email Address</label
+            >
+            <input
+              oninput="validateAllInputs(this)"
+              type="text"
+              class="form-control py-2.5 rounded-3 shadow-none"
+              id="ContantEmail"
+              placeholder="name@example.com"
+            />
+            <p class="d-none">Please enter a valid email address</p>
+          </div>
+          <div class="mb-3">
+            <label for="ContantAddress" class="form-label fw-bold"
+              >Address</label
+            >
+            <input
+              oninput="validateAllInputs(this)"
+              type="text"
+              class="form-control py-2.5 rounded-3 shadow-none"
+              id="ContantAddress"
+              placeholder="Enter address"
+            />
+            <p class="d-none">Please enter a valid Address</p>
+          </div>
+          <div class="mb-3">
+            <label for="ContantSelect" class="form-label fw-bold text-secondary"
+              >Group</label
+            >
+            <select
+              class="form-select py-2.5 rounded-3 shadow-none"
+              id="ContantSelect"
+            >
+              <option selected disabled value="">Select a group</option>
+              <option value="Family">Family</option>
+              <option value="Friends">Friends</option>
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Other">Other</option>
+            </select>
+            <p class="d-none">Please enter a valid group</p>
+          </div>
+          <div class="mb-3">
+            <label for="floatingTextarea" class="form-label fw-bold"
+              >Notes</label
+            >
+            <textarea
+              class="form-control rounded-3 shadow-none"
+              placeholder="Add notes about this contact"
+              id="floatingTextarea"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="ckeck mb-4">
+            <div class="form-check">
+              <input
+                class="form-check-input shadow-none"
+                type="checkbox"
+                id="checkFavorite"
+              />
+              <label class="form-check-label fw-medium" for="checkFavorite">
+                <i class="bi bi-star-fill text-warning me-1"></i> Favorite
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input shadow-none"
+                type="checkbox"
+                id="checkEmergency"
+              />
+              <label class="form-check-label fw-medium" for="checkEmergency">
+                <i class="bi bi-heart-pulse-fill text-danger me-1"></i>
+                Emergency
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex gap-3 mt-3 pt-2 border-top">
+          <button
+            type="button"
+            class="btn border-0 w-100 py-2.5 rounded-4 fw-medium"
+            style="background-color: #f8f9fa; color: #1e293b"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn text-white w-100 py-2.5 rounded-4 fw-medium d-flex align-items-center justify-content-center gap-2"
+            style="background-color: #6366f1"
+            id="SaveContant"
+          >
+            <i class="bi bi-check2 fs-5"></i> Save Contact
+          </button>
+          <button
+            type="submit"
+            class="btn text-white w-100 py-2.5 d-none rounded-4 fw-medium d-flex align-items-center justify-content-center gap-2"
+            style="background-color: #6366f1"
+            id="editContant"
+          >
+            <i class="bi bi-check2 fs-5"></i> Save Contact
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid px-4 mt-4">
+      <div class="totalfe row g-3 mb-4">
+        <div class="col-12 col-md-4">
+          <div
+            class="p-3 bg-white rounded-4 border shadow-sm d-flex align-items-center gap-3"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center rounded-3 text-white bg-primary shadow-sm"
+              style="width: 55px; height: 55px"
+            >
+              <i class="bi bi-people-fill fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-secondary fw-bold small text-uppercase"
+                >Total</span
+              >
+              <span class="fs-2 fw-bold text-dark lh-1 mt-1" id="totalCounter"
+                >0</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div
+            class="p-3 bg-white rounded-4 border shadow-sm d-flex align-items-center gap-3"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center rounded-3 text-white bg-warning shadow-sm"
+              style="width: 55px; height: 55px"
+            >
+              <i class="bi bi-star-fill fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-secondary fw-bold small text-uppercase"
+                >Favorites</span
+              >
+              <span
+                class="fs-2 fw-bold text-dark lh-1 mt-1"
+                id="favoritesCounter"
+                >0</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div
+            class="p-3 bg-white rounded-4 border shadow-sm d-flex align-items-center gap-3"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center rounded-3 text-white bg-danger shadow-sm"
+              style="width: 55px; height: 55px"
+            >
+              <i class="bi bi-heart-pulse-fill fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-secondary fw-bold small text-uppercase"
+                >Emergency</span
+              >
+              <span
+                class="fs-2 fw-bold text-dark lh-1 mt-1"
+                id="emergencyCounter"
+                >0</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cointaner3 row g-4 align-items-start">
+        <div class="col-12 col-md-9 d-flex flex-column gap-4">
+          <div>
+            <h2 class="fw-bold text-dark m-0 fs-3">All Contacts</h2>
+            <p class="text-secondary m-0 mt-1">
+              Manage and organize your contacts
+            </p>
+          </div>
+
+          <div class="position-relative">
+            <i
+              class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"
+            ></i>
+            <input
+              id="input1"
+              oninput="serach()"
+              type="text"
+              class="form-control py-2.5 rounded-3 shadow-none border"
+              style="padding-left: 45px"
+              placeholder="Search by name, phone, or email..."
+            />
+          </div>
+
+          <div class="row g-3" id="contactsGrid"></div>
+        </div>
+
+        <div class="col-12 col-md-3 d-flex flex-column gap-3">
+          <div
+            class="bg-white rounded-4 border shadow-sm w-100 d-flex flex-column"
+            style="overflow: hidden"
+          >
+            <div class="p-2 bg-opacity-10" style="background-color: #fffbeb">
+              <div class="d-flex align-items-center gap-3">
+                <div
+                  class="d-flex align-items-center justify-content-center rounded-3 text-white bg-warning shadow-sm"
+                  style="width: 40px; height: 40px; flex-shrink: 0"
+                >
+                  <i class="bi bi-star-fill fs-4"></i>
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="fs-5 fw-bold text-dark lh-sm">Favorites</span>
+                  <span class="text-secondary small"
+                    >Quick access to starred contacts</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="p-2 d-flex align-items-center justify-content-center bg-white flex-column"
+              id="favoritesList"
+              style="min-height: 100px"
+              id="favoritesCounter"
+            >
+              <span class="text-secondary fw-medium">No favorites yet</span>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-4 border shadow-sm w-100 d-flex flex-column"
+            style="overflow: hidden"
+          >
+            <div class="p-2 bg-opacity-10" style="background-color: #fef2f2">
+              <div class="d-flex align-items-center gap-3">
+                <div
+                  class="d-flex align-items-center justify-content-center rounded-3 text-white bg-danger shadow-sm"
+                  style="width: 40px; height: 40px; flex-shrink: 0"
+                >
+                  <i class="bi bi-heart-pulse-fill fs-4"></i>
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="fs-5 fw-bold text-dark lh-sm">Emergency</span>
+                  <span class="text-secondary small"
+                    >Important contacts for urgent
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="p-2 d-flex align-items-center justify-content-center bg-white flex-column"
+              id="emergencyList"
+              style="min-height: 110px"
+            >
+              <span class="text-secondary fw-medium"
+                >No emergency contacts</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
